@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import { Context, UserContext } from "../Context";
 
 const UseContext = (props) => {

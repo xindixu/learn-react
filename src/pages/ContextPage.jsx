@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Context, UserContext } from "../Context";
 import ContextType from "./ContextType";
 import UseContext from "./UseContext";
 import ConsumerPage from "./ConsumerPage";
 
-const ContextPage = (props) => {
+const ContextPage = () => {
   const [theme, setTheme] = useState({ color: "red" });
   const [user, setUser] = useState({ name: "xindi" });
   return (
