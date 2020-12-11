@@ -11,7 +11,7 @@
   },
   "plugins": ["prettier", "react-hooks"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["warn"],
     "camelcase": 0,
     "consistent-return": 0,
     "import/prefer-default-export": 0,
