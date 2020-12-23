@@ -9,7 +9,6 @@ const Form = ({ form, onFinish, onFinishFailed, ref, children }) => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("submit");
         console.log(formInstance.getFieldsValue());
       }}
     >
