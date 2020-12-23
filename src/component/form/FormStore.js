@@ -4,18 +4,31 @@ class FormStore {
     this.fieldEntities = [];
   }
 
-  registerField = (field) => {
-    this.fieldEntities.push(field);
+  registerField = (entity) => {
+    this.fieldEntities.push(entity);
+
+    // cancel register
+    return () => {
+      this.fieldEntities.filter((f) => f.name !== entity.name);
+      delete this.store[entity.name];
+    };
   };
 
   setFieldsValue = (newStore) => {
+    // update this.store
     this.store = {
       ...this.store,
       ...newStore,
     };
 
     // trigger component update
-    this.fieldEntities.forEach((fn) => fn());
+    this.fieldEntities.forEach((entity) => {
+      Object.keys(newStore).forEach((key) => {
+        if (key === entity.name) {
+          entity.updater();
+        }
+      });
+    });
   };
 
   getFieldsValue = () => ({ ...this.store });

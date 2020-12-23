@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { FieldContext } from "./FieldContext";
 
@@ -10,19 +10,32 @@ const Field = ({ name, rules, children, value, onChange }) => {
     FieldContext
   );
 
-  const [, forceUpdate] = useState();
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
-    registerField(forceUpdate);
-  }, [name]);
+    const unregister = registerField({ updater: forceUpdate, name });
+    return () => {
+      unregister();
+    };
+  }, []);
 
-  const controlled = () => ({
-    value: getFieldValue(name),
-    onChange: (e) => {
-      setFieldsValue({ [name]: e.target.value });
-    },
-  });
-  return React.cloneElement(children, controlled());
+  const controlled = useCallback(
+    () => ({
+      value: getFieldValue(name),
+      onChange: (e) => {
+        setFieldsValue({ [name]: e.target.value });
+      },
+    }),
+    [getFieldValue, name, setFieldsValue]
+  );
+
+  return (
+    <>
+      <div>{React.cloneElement(children, controlled())}</div>
+      <p>value: {getFieldValue(name)}</p>
+    </>
+  );
 };
 
 Field.propTypes = {};
