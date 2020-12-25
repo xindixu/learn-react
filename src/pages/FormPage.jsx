@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Button, Input } from "antd";
 
 const required = { required: true, message: "is required" };
 
 const FormPage = (props) => {
   const [form] = Form.useForm();
+
   const onFinish = () => {
     console.log("success", form);
   };
   const onFinishFailed = () => {
     console.log("failed");
   };
+
   return (
     <div>
       <Form form={form} onFinish={onFinish} onFinishFailed={onFinishFailed}>

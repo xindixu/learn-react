@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 // import Form, { Field } from "rc-field-form";
 import Form, { Field } from "../component/form";
 
@@ -9,17 +9,17 @@ export default function MyRCFieldForm(props) {
   const [form] = Form.useForm();
 
   const onFinish = (val) => {
-    console.log("onFinish", val); // sy-log
+    console.log("onFinish", val);
   };
 
-  // 表单校验失败执行
   const onFinishFailed = (val) => {
-    console.log("onFinishFailed", val); // sy-log
+    console.log("onFinishFailed", val);
   };
 
   useEffect(() => {
-    console.log("form", form); // sy-log
-    // form.setFieldsValue({ username: "default" });
+    console.log("form", form);
+    // set form default value onto the current form
+    form.setFieldsValue({ username: "default" });
   }, []);
 
   return (

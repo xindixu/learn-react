@@ -4,12 +4,14 @@ import { FieldContext } from "./FieldContext";
 import useForm from "./useForm";
 
 const Form = ({ form, onFinish, onFinishFailed, ref, children }) => {
-  const [formInstance] = useForm();
+  // pass back `form` into `useForm`
+  const [formInstance] = useForm(form);
+  formInstance.setCallbacks({ onFinish, onFinishFailed });
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(formInstance.getFieldsValue());
+        formInstance.submit();
       }}
     >
       <FieldContext.Provider value={formInstance}>
