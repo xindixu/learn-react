@@ -32,7 +32,7 @@ export default function MyRCFieldForm(props) {
         <Field name="password" rules={[passworRules]}>
           <input placeholder="input UR Password" type="password" />
         </Field>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </Form>
     </div>
   );

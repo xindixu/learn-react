@@ -14,7 +14,7 @@ const Field = ({ name, rules, children, value, onChange }) => {
   const forceUpdate = useCallback(() => updateState({}), []);
 
   useEffect(() => {
-    const unregister = registerField({ updater: forceUpdate, name });
+    const unregister = registerField({ updater: forceUpdate, name, rules });
     return () => {
       unregister();
     };

@@ -23,7 +23,6 @@ class FormStore {
   };
 
   setFieldsValue = (newStore) => {
-    console.log(this.store, newStore);
     // update this.store
     this.store = {
       ...this.store,
@@ -38,8 +37,6 @@ class FormStore {
         }
       });
     });
-
-    console.log(this.store);
   };
 
   getFieldsValue = () => ({ ...this.store });
@@ -48,6 +45,19 @@ class FormStore {
 
   validate = () => {
     const errs = [];
+
+    this.fieldEntities.forEach((f) => {
+      const { name, rules } = f;
+      const rule = rules && rules[0];
+      const value = this.getFieldValue(name);
+
+      if (rule && rule.required && (value === undefined || value === "")) {
+        errs.push({
+          [name]: rule.message,
+          value,
+        });
+      }
+    });
     return errs;
   };
 
