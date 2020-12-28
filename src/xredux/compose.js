@@ -8,4 +8,4 @@ export function compose(...fns) {
   return fns.reduce((a, b) => (arg) => a(b(arg)));
 }
 
-// compose(f1, f2, f3)
+// compose(f1, f2, f3)(args)

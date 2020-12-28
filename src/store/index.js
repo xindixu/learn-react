@@ -1,4 +1,7 @@
-import { createStore } from "../xredux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+// import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "../xredux";
 
 export const reducer = (state = 0, { type, payload }) => {
   switch (type) {
@@ -11,6 +14,6 @@ export const reducer = (state = 0, { type, payload }) => {
   }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;

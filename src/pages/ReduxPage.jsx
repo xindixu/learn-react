@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import store from "../store";
 
 class ReduxPage extends Component {
-  static propTypes = {};
-
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
       this.forceUpdate();
@@ -21,6 +18,18 @@ class ReduxPage extends Component {
     store.dispatch({ type: "ADD", payload: 100 });
   };
 
+  asycAdd = () => {
+    store.dispatch((dispatch, getState) => {
+      // print out prevState, since we haven't run dispatch / updated the state yet
+      console.log("state", getState());
+      setTimeout(() => {
+        dispatch({ type: "ADD", payload: 100 });
+        // print out current state, since we've run dispatch / updated the state yet
+        console.log("state", getState());
+      }, 1000);
+    });
+  };
+
   minus = () => {
     store.dispatch({ type: "MINUS", payload: 100 });
   };
@@ -32,6 +41,9 @@ class ReduxPage extends Component {
         <div>{store.getState()}</div>
         <button type="button" onClick={this.add}>
           ADD
+        </button>
+        <button type="button" onClick={this.asycAdd}>
+          ASYC ADD
         </button>
         <button type="button" onClick={this.minus}>
           MINUS

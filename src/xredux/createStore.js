@@ -1,10 +1,15 @@
-const createStore = (reducer) => {
+const createStore = (reducer, enhancer) => {
+  if (enhancer) {
+    return enhancer(createStore)(reducer);
+  }
+
   let currentState;
   const currentListeners = [];
 
   const getState = () => {
     return currentState;
   };
+
   const dispatch = (action) => {
     currentState = reducer(currentState, action);
     currentListeners.forEach((listener) => listener());
