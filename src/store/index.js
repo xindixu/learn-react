@@ -4,6 +4,7 @@
 import { createStore, applyMiddleware } from "../xredux";
 import logger from "./logger";
 import thunk from "./thunk";
+import promise from "./promise";
 
 export const reducer = (state = 0, { type, payload }) => {
   switch (type) {
@@ -16,6 +17,6 @@ export const reducer = (state = 0, { type, payload }) => {
   }
 };
 
-const store = createStore(reducer, applyMiddleware(logger, thunk));
+const store = createStore(reducer, applyMiddleware(promise, thunk, logger));
 
 export default store;

@@ -34,6 +34,15 @@ class ReduxPage extends Component {
     store.dispatch({ type: "MINUS", payload: 100 });
   };
 
+  promiseMinus = () => {
+    store.dispatch(
+      Promise.resolve({
+        type: "MINUS",
+        payload: 50,
+      })
+    );
+  };
+
   render() {
     return (
       <div>
@@ -47,6 +56,9 @@ class ReduxPage extends Component {
         </button>
         <button type="button" onClick={this.minus}>
           MINUS
+        </button>
+        <button type="button" onClick={this.promiseMinus}>
+          PROMISE MINUS
         </button>
       </div>
     );

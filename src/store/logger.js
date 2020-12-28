@@ -9,7 +9,7 @@ const logger = ({ getState }) => {
     console.log("prev state", getState());
     console.log("action", action);
 
-    // next - accumulator
+    // next - accumulator logger(thunk(dispatch(action)))
     const returnValue = next(action);
     console.log("next state", getState());
     console.log("-----------------");
