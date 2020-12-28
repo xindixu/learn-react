@@ -1,6 +1,8 @@
 import { compose } from "./compose";
 
+// applyMiddleware(...middlewares)(createStore)(reducer);
 const applyMiddleware = (...middlewares) => {
+  // enhancer(createStore)(reducer);
   return (createStore) => (reducer) => {
     // store = { getState, dispatch, subscribe };
     const store = createStore(reducer);
@@ -11,7 +13,10 @@ const applyMiddleware = (...middlewares) => {
       // read
       getState: store.getState,
       // manipulation: should run only once
-      dispatch: (action, ...args) => dispatch(action, ...args),
+      dispatch: (action, ...args) => {
+        console.log("run middlewareApi dispatch");
+        return dispatch(action, ...args);
+      },
     };
 
     // call every middleware with `middlewareApi` and each middleware becomes a function

@@ -1,5 +1,8 @@
+// createStore(reducer, applyMiddleware(thunk, logger));
+
 const createStore = (reducer, enhancer) => {
   if (enhancer) {
+    // applyMiddleware(thunk, logger)(createStore)(reducer)
     return enhancer(createStore)(reducer);
   }
 
@@ -11,6 +14,8 @@ const createStore = (reducer, enhancer) => {
   };
 
   const dispatch = (action) => {
+    console.log("run store dispatch");
+
     currentState = reducer(currentState, action);
     currentListeners.forEach((listener) => listener());
   };

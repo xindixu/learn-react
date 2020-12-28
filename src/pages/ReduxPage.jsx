@@ -21,11 +21,11 @@ class ReduxPage extends Component {
   asycAdd = () => {
     store.dispatch((dispatch, getState) => {
       // print out prevState, since we haven't run dispatch / updated the state yet
-      console.log("state", getState());
+      // console.log("state", getState());
       setTimeout(() => {
         dispatch({ type: "ADD", payload: 100 });
         // print out current state, since we've run dispatch / updated the state yet
-        console.log("state", getState());
+        // console.log("state", getState());
       }, 1000);
     });
   };

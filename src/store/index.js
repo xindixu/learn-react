@@ -1,7 +1,9 @@
-import thunk from "redux-thunk";
-import logger from "redux-logger";
+// import thunk from "redux-thunk";
+// import logger from "redux-logger";
 // import { createStore, applyMiddleware } from "redux";
 import { createStore, applyMiddleware } from "../xredux";
+import logger from "./logger";
+import thunk from "./thunk";
 
 export const reducer = (state = 0, { type, payload }) => {
   switch (type) {
@@ -14,6 +16,6 @@ export const reducer = (state = 0, { type, payload }) => {
   }
 };
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 export default store;
