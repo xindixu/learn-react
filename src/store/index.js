@@ -1,7 +1,7 @@
 // import thunk from "redux-thunk";
 // import logger from "redux-logger";
 // import { createStore, applyMiddleware, combineReducers } from "redux";
-import { createStore, applyMiddleware, combineReducers } from "../xredux";
+import { createStore, applyMiddleware, combineReducers } from "../xRedux";
 import logger from "./logger";
 import thunk from "./thunk";
 import promise from "./promise";

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+// import { connect } from "react-redux";
+// import { bindActionCreators } from "redux";
+import { bindActionCreators, connect } from "../xReactRedux";
 
+// HOC
+// HOC is a function that takes in a component and return a new component
 @connect(
   // mapStateToProps
   (state) => ({ counter: state.counter, todo: state.todo }),
@@ -15,13 +18,12 @@ import { bindActionCreators } from "redux";
     // const add = () => dispatch({ type: "ADD", payload: 100 });
 
     // or use bindActionCreators
-    let creators = {
+    const creators = {
       add: () => ({ type: "ADD", payload: 100 }),
       minus: () => ({ type: "MINUS", payload: 50 }),
     };
 
-    creators = bindActionCreators(creators, dispatch);
-    return { dispatch, ...creators };
+    return { dispatch, ...bindActionCreators(creators, dispatch) };
   }
 )
 class ReduxPage extends Component {

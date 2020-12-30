@@ -1,8 +1,7 @@
 import React, { useCallback } from "react";
-import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 
-const ReactReduxHookPage = (props) => {
+const ReactReduxHookPage = () => {
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
   const add = useCallback(() => {
@@ -19,7 +18,5 @@ const ReactReduxHookPage = (props) => {
     </div>
   );
 };
-
-ReactReduxHookPage.propTypes = {};
 
 export default ReactReduxHookPage;
