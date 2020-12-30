@@ -1,12 +1,12 @@
 // import thunk from "redux-thunk";
 // import logger from "redux-logger";
-// import { createStore, applyMiddleware } from "redux";
-import { createStore, applyMiddleware } from "../xredux";
+// import { createStore, applyMiddleware, combineReducers } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "../xredux";
 import logger from "./logger";
 import thunk from "./thunk";
 import promise from "./promise";
 
-export const reducer = (state = 0, { type, payload }) => {
+export const counterReducer = (state = 0, { type, payload }) => {
   switch (type) {
     case "ADD":
       return state + payload;
@@ -17,6 +17,18 @@ export const reducer = (state = 0, { type, payload }) => {
   }
 };
 
-const store = createStore(reducer, applyMiddleware(promise, thunk, logger));
+export const todoReducer = (state = ["eat"], { type, payload }) => {
+  switch (type) {
+    case "ADD_TODO":
+      return [...state, payload];
+    default:
+      return state;
+  }
+};
+
+const store = createStore(
+  combineReducers({ counter: counterReducer, todo: todoReducer }),
+  applyMiddleware(promise, thunk, logger)
+);
 
 export default store;
