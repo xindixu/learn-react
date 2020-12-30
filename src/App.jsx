@@ -5,6 +5,8 @@ import FormPage from "./pages/FormPage";
 import FormClassPage from "./pages/FormClassPage";
 import FormRCPage from "./pages/FormRCPage";
 import ReduxPage from "./pages/ReduxPage";
+import ReactReduxPage from "./pages/ReactReduxPage";
+import ReactReduxHookPage from "./pages/ReactReduxHookPage";
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
       {/* <FormClassPage /> */}
       {/* <FormRCPage /> */}
       {/* <FormPage /> */}
-      <ReduxPage />
+      {/* <ReactReduxPage /> */}
+      <ReactReduxHookPage />
     </div>
   );
 }
