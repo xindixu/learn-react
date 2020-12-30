@@ -56,6 +56,7 @@ class ReduxPage extends Component {
     const { counter, todo, add, minus } = this.props;
     return (
       <div>
+        ReactReduxPage
         <h1>Counter</h1>
         <div>{counter}</div>
         <button type="button" onClick={add}>
@@ -70,7 +71,6 @@ class ReduxPage extends Component {
         <button type="button" onClick={this.promiseMinus}>
           PROMISE MINUS
         </button>
-
         <h1>Todos</h1>
         <div>
           <ul>

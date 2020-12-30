@@ -16,8 +16,8 @@ function App() {
       {/* <FormClassPage /> */}
       {/* <FormRCPage /> */}
       {/* <FormPage /> */}
-      <ReactReduxPage />
-      {/* <ReactReduxHookPage /> */}
+      {/* <ReactReduxPage /> */}
+      <ReactReduxHookPage />
       {/* <HooksPage /> */}
     </div>
   );
