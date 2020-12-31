@@ -15,7 +15,7 @@ class HomePage extends Component {
     // return <Redirect to="/product/54321" />;
     return (
       <div>
-        <h3>HomePage</h3>
+        <h1>HomePage</h1>
       </div>
     );
   }

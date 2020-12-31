@@ -4,11 +4,15 @@ import { RouterContext } from "./RouterContext";
 import matchPath from "./matchPath";
 
 const Route = (props) => {
-  const { component, children, render, path } = props;
+  // computedMatch comes from <Switch />
+  // <Switch /> will check match from top to bottom and only render one thing at a time
+  const { component, children, render, path, computedMatch } = props;
   const context = useContext(RouterContext);
 
   const { location, history } = context;
-  const match = path ? matchPath(location.pathname, props) : context.match;
+  const match =
+    computedMatch ||
+    (path ? matchPath(location.pathname, props) : context.match);
 
   const routeProps = {
     location,

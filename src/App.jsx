@@ -1,10 +1,10 @@
-import React, { useReducer } from "react";
+import React from "react";
 // import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import {
   BrowserRouter as Router,
   Route,
   Link,
-  // Switch,
+  Switch,
 } from "./xReactRouterDom";
 
 import "./App.css";
@@ -35,28 +35,29 @@ function App() {
           Update
         </button> */}
         {/* match from top to bottom and must match */}
-        {/* <Switch> */}
-        <Route
-          exact
-          path="/"
-          // 1. priority: inner children > children > component > render
-          // 2. children: will render even if route is not matched
-          //    However, with <Switch />, will not render when not matched
-          //    component, render: will render only if route is matched
-          // 3. children, render: function
-          //    component: component
-          // children={() => <div>Children page</div>}
-          component={HomePage}
-          // ! This will trigger mount/unmount when rerenders.
-          // component={() => <HomePage />}
-          render={() => <div>Render page</div>}
-        >
-          {/* Inner Children */}
-        </Route>
-        <Route path="/product/:id" component={ProductPage} />
-        {/* without `path` - default match */}
-        <Route component={_404Page} />
-        {/* </Switch> */}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            // 1. priority: inner children > children > component > render
+            // 2. children: will render even if route is not matched
+            //    However, with <Switch />, will not render when not matched
+            //    component, render: will render only if route is matched
+            // 3. children, render: function
+            //    component: component
+            // children={() => <div>Children page</div>}
+            component={HomePage}
+            // ! This will trigger mount/unmount when rerenders.
+            // component={() => <HomePage />}
+            render={() => <div>Render page</div>}
+          >
+            {/* Inner Children */}
+          </Route>
+          <Route path="/product/:id" component={ProductPage} />
+          {/* without `path` - default match */}
+          <Route component={_404Page} />
+        </Switch>
+
         {/* <ContextPage /> */}
         {/* <FormClassPage /> */}
         {/* <FormRCPage /> */}
