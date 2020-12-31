@@ -46,10 +46,11 @@ function App() {
             // 3. children, render: function
             //    component: component
             // children={() => <div>Children page</div>}
-            component={HomePage}
+            // component={HomePage}
             // ! This will trigger mount/unmount when rerenders.
             // component={() => <HomePage />}
-            render={() => <div>Render page</div>}
+            // * When using a function, router props are not passed into the component. Use `withRouter` if they are needed
+            render={() => <HomePage />}
           >
             {/* Inner Children */}
           </Route>

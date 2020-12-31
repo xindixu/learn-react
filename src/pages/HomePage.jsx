@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-// import { withRouter } from "../k-react-router-dom";
+import { withRouter } from "../xReactRouterDom";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -12,6 +12,7 @@ class HomePage extends Component {
   }
 
   render() {
+    console.log(this.props);
     // return <Redirect to="/product/54321" />;
     return (
       <div>
@@ -21,4 +22,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);
