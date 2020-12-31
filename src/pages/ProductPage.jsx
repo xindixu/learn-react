@@ -1,5 +1,13 @@
 import React from "react";
-import { Route, Link } from "../xReactRouterDom";
+
+import {
+  Route,
+  Link,
+  useHistory,
+  useParams,
+  useLocation,
+  useRouteMatch,
+} from "../xReactRouterDom";
 
 function Detail() {
   return (
@@ -8,9 +16,16 @@ function Detail() {
     </div>
   );
 }
-const ProductPage = ({ match }) => {
-  const { params, url } = match;
+const ProductPage = () => {
+  const history = useHistory();
+  const params = useParams();
+  const location = useLocation();
+  const match = useRouteMatch();
+
   const { id } = params;
+  const { url } = match;
+
+  console.log(history, params, location, match);
   return (
     <div>
       <h1>Search-{id}</h1>

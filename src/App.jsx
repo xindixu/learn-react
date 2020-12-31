@@ -54,7 +54,11 @@ function App() {
           >
             {/* Inner Children */}
           </Route>
-          <Route path="/product/:id" component={ProductPage} />
+          <Route
+            path="/product/:id"
+            // component={ProductPage}
+            render={() => <ProductPage />}
+          />
           {/* without `path` - default match */}
           <Route component={_404Page} />
         </Switch>

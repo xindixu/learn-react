@@ -18,6 +18,7 @@ const Switch = ({ children }) => {
         : context.match;
     }
   });
+  // outer match
   return match ? React.cloneElement(element, { computedMatch: match }) : null;
 };
 

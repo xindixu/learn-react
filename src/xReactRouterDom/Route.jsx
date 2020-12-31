@@ -15,10 +15,30 @@ const Route = (props) => {
     (path ? matchPath(location.pathname, props) : context.match);
 
   const routeProps = {
-    location,
-    history,
+    ...context,
     match,
   };
+
+  return (
+    // inner match
+    // Create an inner context and pass down latest `match` value
+    <RouterContext.Provider value={routeProps}>
+      {match
+        ? children
+          ? typeof children === "function"
+            ? children(routeProps)
+            : children
+          : component
+          ? React.createElement(component, routeProps)
+          : render
+          ? render(routeProps)
+          : null
+        : typeof children === "function"
+        ? children(routeProps)
+        : null}
+    </RouterContext.Provider>
+  );
+
   // match: children | component | render
   if (match) {
     if (children) {
