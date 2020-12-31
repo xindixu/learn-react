@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link } from "../xReactRouterDom";
 
 function Detail() {
   return (
@@ -14,7 +14,7 @@ const ProductPage = ({ match }) => {
   return (
     <div>
       <h1>Search-{id}</h1>
-      <Link to={`${url}/detail`}>详情</Link>
+      <Link to={`${url}/detail`}>Detail</Link>
       <Route path={`${url}/detail`} component={Detail} />
     </div>
   );

@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { RouterContext } from "./RouterContext";
+import matchPath from "./matchPath";
 
-const Route = ({ path, component, children, render }) => {
-  const { location, history } = useContext(RouterContext);
+const Route = (props) => {
+  const { component, children, render, path } = props;
+  const context = useContext(RouterContext);
 
-  const match = location.pathname === path;
+  const { location, history } = context;
+  const match = path ? matchPath(location.pathname, props) : context.match;
 
-  const props = {
+  const routeProps = {
     location,
     history,
     match,
@@ -15,13 +18,13 @@ const Route = ({ path, component, children, render }) => {
   // match: children | component | render
   if (match) {
     if (children) {
-      return typeof children === "function" ? children(props) : children;
+      return typeof children === "function" ? children(routeProps) : children;
     }
     if (component) {
-      return React.createElement(component, props);
+      return React.createElement(component, routeProps);
     }
     if (render) {
-      return render(props);
+      return render(routeProps);
     }
     return null;
   }
@@ -29,9 +32,14 @@ const Route = ({ path, component, children, render }) => {
   // not match: children(function) | null
   // <Route children={() => {}} /> -> typeof children === "function"
   // <Route>{children}</Route> -> typeof children === "object" (jsx syntax)
-  return typeof children === "function" ? children(props) : null;
+  return typeof children === "function" ? children(routeProps) : null;
 };
 
-Route.propTypes = {};
+Route.propTypes = {
+  component: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  render: PropTypes.func,
+  path: PropTypes.string,
+};
 
 export default Route;
