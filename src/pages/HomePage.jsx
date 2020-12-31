@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 // import { withRouter } from "../k-react-router-dom";
 
 class HomePage extends Component {
@@ -12,7 +12,7 @@ class HomePage extends Component {
   }
 
   render() {
-    // return <Redirect to="/welcome" />;
+    // return <Redirect to="/product/54321" />;
     return (
       <div>
         <h3>HomePage</h3>
